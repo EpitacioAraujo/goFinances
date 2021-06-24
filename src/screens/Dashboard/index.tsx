@@ -10,11 +10,56 @@ import {
     UserGreeting,
     UserName,
     Icon,
-    HighLightCards
+    HighLightCards,
+    Transactions,
+    Title,
+    TransactionsList
 } from './styles';
+
 import { HighLightCard } from '../../components/HighLightCard';
+import { TransactionCard, TransactionCardProps } from './../../components/TransactionCard';
+
+export interface DataListProps extends TransactionCardProps {
+    id: string;
+}
 
 export function Dashboard(){
+    const data: DataListProps[] = [
+        {
+            id: '1',
+            type: "positive",
+            title:"Desenvolvimento de site",
+            amount:"R$ 12.000,00",
+            category:{
+                name: "Vendas",
+                icon: "dollar-sign"
+            },
+            date:"13/04/2020"
+        },
+        {
+            id: '2',
+            type: "negative",
+            title:"Desenvolvimento de site",
+            amount:"R$ 12.000,00",
+            category:{
+                name: "Vendas",
+                icon: "coffee"
+            },
+            date:"13/04/2020"
+        },
+        {
+            id: '3',
+            type: "positive",
+            title:"Desenvolvimento de site",
+            amount:"R$ 12.000,00",
+            category:{
+                name: "Vendas",
+                icon: "home"
+            },
+            date:"13/04/2020"
+        }
+    ]
+
     return(
         <Container>
             <Header>
@@ -37,6 +82,7 @@ export function Dashboard(){
                     amount="R$ 17.400,00"
                     lastTansaction="Última entrada dia 13 de abril"
                 />
+                
                 <HighLightCard 
                     type="down"
                     title="Saidas"
@@ -50,6 +96,16 @@ export function Dashboard(){
                     lastTansaction="01 à 06 de abril"
                 />
             </HighLightCards>
+        
+            <Transactions>
+                <Title>Listagem</Title>
+                
+                <TransactionsList
+                    data={data}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({item}) => <TransactionCard data={item} />}
+                />                
+            </Transactions>
         </Container>
     )
 }
