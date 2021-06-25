@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components'
 import AppLoading from 'expo-app-loading';
 
-import { Dashboard } from './src/screens/Dashboard';
+import { Register } from './src/screens/Register';
 import Theme from './src/global/styles/theme';
 
 import {
@@ -19,13 +19,13 @@ export default function App() {
     Poppins_700Bold
   });
 
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return <AppLoading />
   }
 
   return (
     <ThemeProvider theme={Theme}>
-      <Dashboard />
+      <Register />
     </ThemeProvider>
   );
 }
