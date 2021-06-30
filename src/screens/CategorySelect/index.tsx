@@ -11,7 +11,7 @@ import {
     Footer
 } from './styles'
 
-import { Button } from './../../components/Forms/Button/Index';
+import { Button } from '../../components/Forms/Button';
 import { categories } from '../../utils/categories';
 
 interface ICategory {
@@ -20,16 +20,21 @@ interface ICategory {
 }
 
 interface Props {
-    category: string;
+    category: ICategory;
     setCategory: (category: ICategory) => void;
-    closeCategory: () => void;
+    closeSelectCategory: () => void;
 }
 
 export function CategorySelect({
     category,
     setCategory,
-    closeCategory
+    closeSelectCategory
 }: Props) {
+
+    function handleCategorySelect(category: ICategory) {
+        setCategory(category);
+    }
+
     return (
         <Container>
             <Header>
@@ -41,8 +46,10 @@ export function CategorySelect({
                 style={{ flex: 1, width: '100%' }}
                 keyExtractor={(item) => item.key}
                 renderItem={({ item }) => (
-
-                    <Category>
+                    <Category
+                        onPress={() => handleCategorySelect(item)}
+                        isActive={category.key === item.key}
+                    >
                         <Icon name={item.icon}></Icon>
                         <Name>{item.name}</Name>
                     </Category>
@@ -51,7 +58,10 @@ export function CategorySelect({
             />
 
             <Footer>
-                <Button title="Selecionar" />
+                <Button
+                    title="Selecionar"
+                    onPress={closeSelectCategory}
+                />
             </Footer>
         </Container>
     )
