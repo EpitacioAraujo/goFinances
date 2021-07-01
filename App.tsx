@@ -1,9 +1,14 @@
+import 'react-native-gesture-handler';
+
 import React from 'react';
 import { ThemeProvider } from 'styled-components'
 import AppLoading from 'expo-app-loading';
 
-import { Register } from './src/screens/Register';
 import Theme from './src/global/styles/theme';
+
+import { AppRoutes } from './src/routes/app-routes';
+
+import { NavigationContainer } from '@react-navigation/native'
 
 import {
   useFonts,
@@ -25,7 +30,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={Theme}>
-      <Register />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
