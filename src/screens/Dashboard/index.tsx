@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { 
+import {
     Container,
     Header,
     UserWrapper,
@@ -9,6 +9,7 @@ import {
     User,
     UserGreeting,
     UserName,
+    LogoutButton,
     Icon,
     HighLightCards,
     Transactions,
@@ -23,44 +24,44 @@ export interface DataListProps extends TransactionCardProps {
     id: string;
 }
 
-export function Dashboard(){
+export function Dashboard() {
     const data: DataListProps[] = [
         {
             id: '1',
             type: "positive",
-            title:"Desenvolvimento de site",
-            amount:"R$ 12.000,00",
-            category:{
+            title: "Desenvolvimento de site",
+            amount: "R$ 12.000,00",
+            category: {
                 name: "Vendas",
                 icon: "dollar-sign"
             },
-            date:"13/04/2020"
+            date: "13/04/2020"
         },
         {
             id: '2',
             type: "negative",
-            title:"Desenvolvimento de site",
-            amount:"R$ 12.000,00",
-            category:{
+            title: "Desenvolvimento de site",
+            amount: "R$ 12.000,00",
+            category: {
                 name: "Vendas",
                 icon: "coffee"
             },
-            date:"13/04/2020"
+            date: "13/04/2020"
         },
         {
             id: '3',
             type: "positive",
-            title:"Desenvolvimento de site",
-            amount:"R$ 12.000,00",
-            category:{
+            title: "Desenvolvimento de site",
+            amount: "R$ 12.000,00",
+            category: {
                 name: "Vendas",
                 icon: "home"
             },
-            date:"13/04/2020"
+            date: "13/04/2020"
         }
     ]
 
-    return(
+    return (
         <Container>
             <Header>
                 <UserWrapper>
@@ -71,40 +72,43 @@ export function Dashboard(){
                             <UserName>Epitacio</UserName>
                         </User>
                     </UserInfo>
-                    <Icon name="power" />
+
+                    <LogoutButton onPress={() => { }} >
+                        <Icon name="power" />
+                    </LogoutButton>
                 </UserWrapper>
             </Header>
 
             <HighLightCards>
-                <HighLightCard 
+                <HighLightCard
                     type="up"
                     title="Entradas"
                     amount="R$ 17.400,00"
                     lastTansaction="Última entrada dia 13 de abril"
                 />
-                
-                <HighLightCard 
+
+                <HighLightCard
                     type="down"
                     title="Saidas"
                     amount="R$ 1.259,00"
                     lastTansaction="Última entrada dia 03 de abril"
                 />
-                <HighLightCard 
+                <HighLightCard
                     type="total"
                     title="Total"
                     amount="R$ 16.141,00"
                     lastTansaction="01 à 06 de abril"
                 />
             </HighLightCards>
-        
+
             <Transactions>
                 <Title>Listagem</Title>
-                
+
                 <TransactionsList
                     data={data}
                     keyExtractor={(item) => item.id}
-                    renderItem={({item}) => <TransactionCard data={item} />}
-                />                
+                    renderItem={({ item }) => <TransactionCard data={item} />}
+                />
             </Transactions>
         </Container>
     )
