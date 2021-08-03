@@ -6,7 +6,7 @@ export const Container = styled.View`
     background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled.View`
+export const Header = styled.Text`
     background-color: ${({ theme }) => theme.colors.primary};
 
     width: 100%;
@@ -22,3 +22,7 @@ export const Title = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     font-size: ${RFValue(18)}px;
 `;
+
+export const Content = styled.ScrollView.attrs({
+    contentContainerStyle:{ flex: 1, padding: 24}
+})``;
