@@ -2,6 +2,7 @@ import * as React from 'react'
 import {
     Container,
     Header,
+    Title,
     Content
 } from './styles'
 
@@ -70,7 +71,11 @@ export function Resume() {
 
     return (
         <Container>
-            <Header>Resumo</Header>
+            <Header>
+                <Title>
+                    Resumo
+                </Title>
+            </Header>
 
             <Content>
                 {
